@@ -1,0 +1,94 @@
+.login {
+  width: 53.125rem;
+  height: 31.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.9) 50%,
+      transparent 50%
+    ),
+    url("./images/bg_1.jpg");
+  background-size: cover;
+  background-position: left;
+  border-radius: 0.625rem;
+}
+.login__group {
+  margin-bottom: 1.56rem;
+  margin-left: 2.5rem;
+}
+.textbox {
+  padding: 1.25rem;
+  width: 40%;
+  outline: none;
+  border: 1px solid #777;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-family: Kanit, sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 0.94rem;
+}
+
+.textbox:placeholder-shown ~ .label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-1rem);
+}
+
+.label {
+  font-size: 0.75rem;
+  color: #777;
+  font-weight: 700;
+  margin-left: 1.25rem;
+  margin-top: 0.31rem;
+  display: block;
+  transition: all 0.2s;
+}
+.box-shadow {
+  box-shadow: 0 2rem 4rem rgba(#000, 0.32);
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.btn {
+  background-color: #00abe4;
+  font-size: 0.937rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.067rem;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.94rem 2.15rem;
+  border-radius: 3.12rem;
+  transition: all 0.2s;
+  position: relative;
+  transform: rotate(0);
+  backface-visibility: hidden;
+  border: none;
+  cursor: pointer;
+}
+.btn:active {
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.1rem);
+}
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+.background__login {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(0, 171, 228, 0.9),
+      rgba(35, 100, 239, 0.9)
+    ),
+    url("./images/cause-1.jpg");
+  background-size: cover;
+  background-position: center;
+}
