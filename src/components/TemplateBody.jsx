@@ -1,11 +1,15 @@
 import React from 'react'
 import styled from 'styled-components';
-import TemplateContainer from './TemplateContainer';
+import CarrdPage from './CarrdPage';
+// import TemplateContainer from './TemplateContainer';
 function TemplateBody() {
   return (
-    <Container>
+    <Container id='temp'>
         <h1>Templates</h1>
-        <TemplateContainer/>
+        <div className='cards'>
+          <CarrdPage/>
+
+        </div>
     </Container>
   )
 }
@@ -15,11 +19,17 @@ export default TemplateBody;
 const Container=styled.div`
         text-align: center;
         justify-content: center;
-        /* padding-bottom: 2%; */
+        padding-bottom: 3%;
        h1{
         font-weight: bold;
         font-size: 60px;
         width: 100%;
-        margin-top: 7%;
+        margin-bottom:5%;
+    }
+
+    .cards{
+      display: flex;
+      text-align: center;
+      justify-content: center;
     }
 `;
