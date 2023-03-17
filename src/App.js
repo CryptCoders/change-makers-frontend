@@ -6,6 +6,7 @@ import SignUp from "./SignUp";
 import LandPage from "./components/Landpage";
 import Form from "./components/Form";
 import YourSite from "./YourSite";
+import Dashboard from "./Dashboard";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/ngo/:name" element={<NgoTheme />} />
         <Route path="/yoursite" element={<YourSite />} />
+        <Route path="/yoursite" element={<YourSite />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
