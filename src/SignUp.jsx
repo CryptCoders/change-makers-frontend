@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
+import Landpage from "./components/Landpage";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [logginngIn, setLogginIn] = useState("true");
   const [token, setToken] = useState(null);
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Email", email);
@@ -27,6 +30,9 @@ const SignUp = () => {
     const loggedIn = await response.json();
     setToken(loggedIn.token);
     console.log(loggedIn);
+    if (loggedIn.token) {
+      return navigate("/");
+    }
   };
   return (
     <>
