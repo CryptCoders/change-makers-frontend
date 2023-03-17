@@ -18,7 +18,7 @@ function App() {
         <Route path="/ngo/:name" element={<NgoTheme />} />
         <Route path="/yoursite" element={<YourSite />} />
         <Route path="/yoursite" element={<YourSite />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/ngo/dashboard/:name" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );

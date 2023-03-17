@@ -44,7 +44,7 @@ const YourSite = () => {
                 <Nav.Link href={link}>{link}</Nav.Link>
               </td>
               <td>
-                <Nav.Link href={link+"/dashboard"}>{link+"/dashboard"}</Nav.Link>
+                <Nav.Link href={link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}>{link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}</Nav.Link>
               </td>
             </tr>
           ))}
