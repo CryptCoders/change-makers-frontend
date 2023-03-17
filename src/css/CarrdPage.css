@@ -1,0 +1,18 @@
+.carrd-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+  }
+  
+  .carrd-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+  }
+  
+  .carrd-text {
+    padding: 20px;
+    background-color: #fff;
+  }
+  

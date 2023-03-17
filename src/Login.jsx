@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [logginngIn, setLogginIn] = useState("true");
   const [token, setToken] = useState(null);
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
+    console.log("ok");
+
     e.preventDefault();
     const response = await fetch("http://127.0.0.1:8000/api/v1/signin", {
       method: "POST",
@@ -19,8 +23,12 @@ const Login = () => {
     });
 
     const loggedIn = await response.json();
-    setToken(loggedIn.token);
-    console.log(loggedIn);
+
+    localStorage.setItem("token", loggedIn.token);
+    if (loggedIn.token) {
+      console.log("User", loggedIn.token);
+      return navigate("/");
+    }
   };
   const LogOut = async (e) => {
     const response = await fetch("http://127.0.0.1:8000/api/v1/signout", {
@@ -33,6 +41,8 @@ const Login = () => {
       },
     });
     const logoutresponse = await response.json();
+
+    localStorage.setItem("token", null);
     setToken(null);
     console.log(logoutresponse);
   };
