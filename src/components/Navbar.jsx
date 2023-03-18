@@ -6,9 +6,10 @@ import Navbar from "react-bootstrap/Navbar";
 // import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import "../css/navbar.css";
-import { Link, Navigate } from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 function Navbarw() {
   const [user, setUser] = useState(false);
+  const navigate = useNavigate();
   const checkUser = async () => {
     console.log("token", localStorage.getItem("token"));
     const response = await fetch("http://127.0.0.1:8000/api/v1/currentUser", {
@@ -29,6 +30,24 @@ function Navbarw() {
       return <Navigate to="/" />;
     }
   };
+   const LogOut = async (e) => {
+    const response = await fetch("http://127.0.0.1:8000/api/v1/signout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem('token'),
+        withCredentials: true,
+      },
+    });
+    const logoutresponse = await response.json();
+
+    localStorage.clear();
+    console.log(logoutresponse);
+    if(logoutresponse.token === '')
+      return navigate('/login');
+
+  };
   useEffect(() => {
     checkUser();
   }, []);
@@ -46,7 +65,7 @@ function Navbarw() {
             {user ? (
               <>
                 <Nav.Link href="/yoursite">Your site</Nav.Link>
-                <Nav.Link href="/login">Logout</Nav.Link>
+                <Nav.Link onClick={LogOut}>Logout</Nav.Link>
               </>
             ) : (
               <>

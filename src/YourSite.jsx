@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import { Link, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
 const YourSite = () => {
   const [links, setLinks] = useState([]);
   const [count, setCount] = useState(0);
@@ -26,6 +27,10 @@ const YourSite = () => {
   }, []);
 
   return (
+      <>
+        <Navbar/>
+      <h2 style={{"text-align": "center", "padding-top": "4rem", "padding-bottom": "1.5rem"}}>Your sites</h2>
+
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
@@ -36,9 +41,9 @@ const YourSite = () => {
       </thead>
       <tbody>
         {links &&
-          links.map((link) => (
+          links.map((link, key) => (
             <tr>
-              <td>{count}</td>
+              <td>{key + 1}</td>
 
               <td>
                 <Nav.Link href={link}>{link}</Nav.Link>
@@ -50,6 +55,7 @@ const YourSite = () => {
           ))}
       </tbody>
     </Table>
+        </>
   );
 };
 export default YourSite;

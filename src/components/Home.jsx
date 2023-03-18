@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import Homeimg from '../images/homeImg.jpeg';
+import Homeimg from '../images/home-bg.jpeg';
 import "../css/navbar.css";
 import axios from 'axios';
 // import Container from 'react-bootstrap/esm/Container';
@@ -15,7 +15,7 @@ function Home() {
         <button className='tempbtn'>See Templates</button>
       </div>
       <div className='img'>
-        <img src={Homeimg} alt="" />
+        <img style={{"width": "698px", "height": "558px"}} src={Homeimg} alt="" />
       </div>
     </Container>
   )
