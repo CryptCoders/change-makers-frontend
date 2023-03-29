@@ -9,6 +9,24 @@ import "../css/navbar.css";
 import { Link, Navigate } from "react-router-dom";
 function Navbarw() {
   const [user, setUser] = useState(false);
+
+  const LogOut = async (e) => {
+    const response = await fetch("http://127.0.0.1:8000/api/v1/signout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `${localStorage.getItem('token')}`,
+        withCredentials: true,
+      },
+    });
+    const logoutresponse = await response.json();
+
+    localStorage.setItem("token", null);
+    
+    console.log(logoutresponse);
+  };
+
   const checkUser = async () => {
     console.log("token", localStorage.getItem("token"));
     const response = await fetch("http://127.0.0.1:8000/api/v1/currentUser", {
@@ -20,6 +38,9 @@ function Navbarw() {
         withCredentials: true,
       },
     });
+
+    
+
     const user_data = await response.json();
     if (user_data.code === 401) {
       console.log("Enter error");
@@ -46,7 +67,7 @@ function Navbarw() {
             {user ? (
               <>
                 <Nav.Link href="/yoursite">Your site</Nav.Link>
-                <Nav.Link href="/login">Logout</Nav.Link>
+                <Nav.Link href="/login" onClick={LogOut}>Logout</Nav.Link>
               </>
             ) : (
               <>

@@ -30,22 +30,7 @@ const Login = () => {
       return navigate("/");
     }
   };
-  const LogOut = async (e) => {
-    const response = await fetch("http://127.0.0.1:8000/api/v1/signout", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `${token}`,
-        withCredentials: true,
-      },
-    });
-    const logoutresponse = await response.json();
-
-    localStorage.setItem("token", null);
-    setToken(null);
-    console.log(logoutresponse);
-  };
+  
   return (
     <>
       <div className="background background__login center"></div>
