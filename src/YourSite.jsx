@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import { Link, Navigate } from "react-router-dom";
+import Navbarw from "./components/Navbar";
 const YourSite = () => {
   const [links, setLinks] = useState([]);
   const [count, setCount] = useState(0);
@@ -26,6 +27,10 @@ const YourSite = () => {
   }, []);
 
   return (
+    <>
+    <Navbarw/>
+    <div className="yoursite">  
+        <h2 style={{'textAlign':"center",'padding':'1.5rem'}}>Your sites</h2>
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
@@ -36,20 +41,23 @@ const YourSite = () => {
       </thead>
       <tbody>
         {links &&
-          links.map((link) => (
+          links.map((link, key) => (
             <tr>
-              <td>{count}</td>
+              <td>{key + 1}</td>
 
               <td>
-                <Nav.Link href={link}>{link}</Nav.Link>
+                <Nav.Link href={link}><a target="_blank" href={link}>{link}</a></Nav.Link>
               </td>
               <td>
-                <Nav.Link href={link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}>{link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}</Nav.Link>
+                <Nav.Link href={link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}><a target="_blank" href={link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}>{link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}</a></Nav.Link>
+                {/* <Nav.Link href={link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}>{link.substring(0, link.lastIndexOf('/')) + "/dashboard" + link.substring(link.lastIndexOf('/'))}</Nav.Link> */}
               </td>
             </tr>
           ))}
       </tbody>
     </Table>
+    </div>
+    </>
   );
 };
 export default YourSite;

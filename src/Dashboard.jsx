@@ -80,6 +80,8 @@ const Dashboard = () =>
                 date: eventDate
             })
         });
+
+        return navigate('/yoursite');
     }
 
     const updateDetails = async () =>
